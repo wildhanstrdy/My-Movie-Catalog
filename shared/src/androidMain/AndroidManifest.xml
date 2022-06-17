@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.krstudio.mymoviecatalogue" />
+<manifest package="com.krstudio.mymoviecatalogue"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>

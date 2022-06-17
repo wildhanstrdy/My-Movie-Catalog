@@ -23,9 +23,14 @@ kotlin {
     }
     
     sourceSets {
+        val ktorVersion = "1.5.4"
         val commonMain by getting{
             dependencies {
-                implementation("io.ktor:ktor-client:1.0.0")
+                //Logger
+                implementation("com.github.aakira:napier:1.4.1")
+                implementation("io.ktor:ktor-client-core:$ktorVersion")
+                implementation("io.ktor:ktor-client-logging:$ktorVersion")
+                implementation("io.ktor:ktor-client-serialization:$ktorVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.0.1")
             }
         }
@@ -36,8 +41,8 @@ kotlin {
         }
         val androidMain by getting{
             dependencies {
-                implementation("io.ktor:ktor-client:1.0.0")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.0.1")
+                implementation("io.ktor:ktor-client-android:$ktorVersion")
+                implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
             }
         }
         val androidTest by getting
@@ -45,6 +50,9 @@ kotlin {
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
         val iosMain by creating {
+            dependencies {
+                implementation("io.ktor:ktor-client-ios:$ktorVersion")
+            }
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
