@@ -13,12 +13,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - run: |
-          echo ${{github.event.inputs.is-pull}}
-      - if: ${{!github.event.inputs.is-pull}}
+          echo ${{ github.event.inputs.is-pull }}
+      - if: ${{ github.event.inputs.is-pull == false }}
         name: Push WTI false
         run: |
           echo "false boy"
-      - if: ${{github.event.inputs.is-pull}}
+      - if: ${{ github.event.inputs.is-pull == true }}
         name: Push WTI true
         run: |
           echo "true boy"      
