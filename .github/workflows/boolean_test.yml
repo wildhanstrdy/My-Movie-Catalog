@@ -1,0 +1,17 @@
+on:
+  workflow_dispatch:
+    inputs:
+      is-pull:
+        type: boolean
+        description: 'Check to pull WTI, uncheck to push WTI'
+        default: true
+        required: true
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - run: |
+          echo ${{github.event.inputs.is-pull}}
+          
