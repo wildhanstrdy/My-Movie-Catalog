@@ -1,0 +1,3 @@
+[submodule "moviewCatalogueIos/core"]
+	path = moviewCatalogueIos/core
+	url = git@github.com:wildhanstrdy/core.git
