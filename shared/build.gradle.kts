@@ -2,6 +2,8 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    id("com.rickclephas.kmp.nativecoroutines") version "0.12.6-new-mm"
+    kotlin("plugin.serialization") version "1.6.10"
 }
 
 version = "1.0"
@@ -23,15 +25,18 @@ kotlin {
     }
     
     sourceSets {
-        val ktorVersion = "1.5.4"
+        val ktorVersion = "2.0.2"
         val commonMain by getting{
             dependencies {
                 //Logger
-                implementation("com.github.aakira:napier:1.4.1")
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-logging:$ktorVersion")
                 implementation("io.ktor:ktor-client-serialization:$ktorVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.0.1")
+                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+                implementation ("co.touchlab:stately-common:1.2.0")
+                implementation ("co.touchlab:stately-concurrency:1.2.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
             }
         }
         val commonTest by getting {
@@ -52,6 +57,7 @@ kotlin {
         val iosMain by creating {
             dependencies {
                 implementation("io.ktor:ktor-client-ios:$ktorVersion")
+                implementation("io.ktor:ktor-client-darwin:$ktorVersion")
             }
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)

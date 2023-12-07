@@ -2,8 +2,11 @@ package com.krstudio.mymoviecatalogue.android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.krstudio.mymoviecatalogue.Greeting
 import android.widget.TextView
+import com.krstudio.mymoviecatalogue.APIService
+import com.krstudio.mymoviecatalogue.Platform
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
@@ -23,8 +26,9 @@ class MainActivity : AppCompatActivity(),CoroutineScope {
         val tv: TextView = findViewById(R.id.text_view)
         launch(Dispatchers.Main) {
             withContext(Dispatchers.IO){
-                val result = greet()
-
+                val result = APIService().
+                getTopRatedMovies()
+                Log.d("sdf","${result.results.toString()}")
             }
         }
     }
