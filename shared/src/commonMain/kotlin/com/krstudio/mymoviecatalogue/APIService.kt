@@ -20,7 +20,7 @@ class APIService() {
 
     suspend fun getTopRatedMovies(): Movie {
         val movie:Movie =  Platform().httpClient.get(
-            "${BASE_URL}movie/top_rated?api_key=51a7e7002f154f25318e9882ad9a11b3&language=en-US&page=1"
+            "${BASE_URL}movie/top_rated?api_key=0&language=en-US&page=1"
         ).body()
         return movie
     }
